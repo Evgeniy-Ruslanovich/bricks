@@ -11,7 +11,7 @@ $link = mysqli_connect("localhost", "root", "");
 $data = mysqli_query($link, "select * from `fruits1`.`fruits`");
 //var_dump( mysqli_fetch_array($data, MYSQLI_ASSOC));
 
-$tableArray = [];
+$tableArray = []; //создали массив, запихиваем в него данные из базы. По крайней мере этот массив мне понятен, а дефолтный не очень понятен
 $i = 0;
 while($row = mysqli_fetch_array($data)) {
 
@@ -23,20 +23,20 @@ while($row = mysqli_fetch_array($data)) {
 echo $i ;
 
 //var_dump($tableArray);
-echo "<table>";
+echo "<table style='border-collapse: collapse; border: 1px solid grey;'>";
 for ($i=0; $i< 3; $i++) {
     echo ("<tr><td>" . $tableArray[$i]['id'] . "</td><td>" . $tableArray[$i]['name'] . "</td></tr>");
 }
 echo "</table>";
-/*function drawRow ($dataArray) {
-    for ($i=0; $i> count($dataArray); $i++) {
-        echo "<tr><td>" . $dataArray['id'] . "</td><td>" . $dataArray['name'] . "</td></tr>";
+function drawRow ($dataArray) {
+    for ($i=0; $i<  count($dataArray); $i++) {
+        echo "<tr><td>" . $dataArray[$i]['id'] . "</td><td>" . $dataArray[$i]['name'] . "</td></tr>";
     }
-}*/
-/*
+}
+
 ob_start();
-echo "<table>";
+echo "<table><tbody>";
 drawRow ($tableArray);
-echo "</table>";
-ob_get_clean();*/
+echo "</tbody></table>";
+ob_end_flush();
 
