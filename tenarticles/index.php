@@ -1,4 +1,4 @@
-<?php
+    <?php
 /**
  * Created by PhpStorm.
  * User: Admin
@@ -72,4 +72,6 @@ function drawArticle($articles, $route) {
     echo "Заголовок статьи: <b>" . $articles[$route]['name'] . "</b><br>";
     echo $articles[$route]['descript'];
 }
+
+var_dump($articles);
 
