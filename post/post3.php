@@ -17,7 +17,7 @@ echo "<a href='post2.php'>Новый запрос</a><br>";
 $date_end = (int)$_POST['date_end'];
 $date_begin = (int)$_POST['date_begin'];
 
-$indicators = array('Цена производителя', 'Цена крупный опт', 'Цена мелкий опт', 'Цена розница', 'Цена ритейл');
+$indicators = array('Цена производителя', 'Цена крупный опт', 'Цена мелкий опт', 'Цена розница', 'Цена ритейл', 'Объем рынка', 'В денежном выражении','в ценах производителя','в ценах крупный опт', 'в ценах мелкий опт');
 
 $year_count = $date_end - $date_begin + 1;
 $table_html_begin = "<table><tbody>";
@@ -36,7 +36,7 @@ $table_indicators = '';
 for ($i=0; $i< count($indicators); $i++) {
 	$table_indicators .= "<tr><td>" . $indicators[$i] . "</td>"; 
 	for ($k=0; $k<$year_count; $k++) {
-		$table_indicators .= "<td></td>";
+		$table_indicators .= "<td>" . rand(100,1000) . "</td>";
 	}
 	$table_indicators .= "</tr>";
 
