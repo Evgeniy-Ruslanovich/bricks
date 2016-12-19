@@ -12,10 +12,12 @@ echo "<h3>Вы выбрали следующие показатели:</h3>";
 echo "Отрасль хозяйства: "  . $_POST['part'] . "<br>";
 echo "Регион: "  . $_POST['location'] . "<br>";
 echo "За период с "  . $_POST['date_begin'] . " по " . $_POST['date_end'] . "<br>";
-echo "<a href='post2.php'>Новый запрос</a>";
+echo "<a href='post2.php'>Новый запрос</a><br>";
 
 $date_end = (int)$_POST['date_end'];
 $date_begin = (int)$_POST['date_begin'];
+
+$indicators = array('Цена производителя', 'Цена крупный опт', 'Цена мелкий опт', 'Цена розница', 'Цена ритейл');
 
 $year_count = $date_end - $date_begin + 1;
 $table_html_begin = "<table><tbody>";
@@ -28,8 +30,22 @@ for ($i=1; $i<=$year_count; $i++) {
 	$current_year++;
 }
 
-$table = $table_html_begin . $table_head . "</tr>" . $table_html_end;
+echo "Количество индикаторов: " . (count($indicators)) . "<br>";
+
+$table_indicators = '';
+for ($i=0; $i< count($indicators); $i++) {
+	$table_indicators .= "<tr><td>" . $indicators[$i] . "</td>"; 
+	for ($k=0; $k<$year_count; $k++) {
+		$table_indicators .= "<td></td>";
+	}
+	$table_indicators .= "</tr>";
+
+}
+
+//var_dump($table_indicators);
+
+$table = $table_html_begin . $table_head . "</tr>"  . $table_indicators . $table_html_end;
 
 echo $table;
 
-$indicators = array('Цена производителя', 'Цена крупный опт', 'Цена мелкий опт', 'Цена розница', 'Цена ритейл');
+
