@@ -61,6 +61,15 @@ function get_table_head($start_time, $end_time){
 
 
 /*Функция возвращает ряд данных в виде массива -показатели по определенному индикатору, в определенносм месте - в заданном промежутке времени*/
-function get_indicator_data($indicator, $location, $sector, $start_time, $end_time) {
+function get_indicator_data($link, $indicator, $location, $sector, $start_time, $end_time) {
+	$query = "SELECT `value` FROM `aasc`.`data` WHERE `indicator_id` = " . $indicator . " AND`location_id` = " . $location . " AND `sector_id` = " . $sector . " ORDER BY `time_id`";
+	//$values_q_result = mysqli_query($link, "SELECT `value` FROM `aasc`.`data` WHERE `location_id` = 1 AND `sector_id` = 1 ORDER BY `time_id`");
+	$values_q_result = mysqli_query($link, $query);
+	$values_data_array = mysqli_fetch_all($values_q_result, MYSQLI_NUM);
+	$values_array = [];
+	foreach ($values_data_array as $value) {  //создаем простой прямой массив инидкаторов
+	array_push($values_array, $value[0]);
+	}
 
+	return $values_array;
 }
