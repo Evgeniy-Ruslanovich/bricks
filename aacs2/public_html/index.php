@@ -128,13 +128,13 @@ $end_years = [ //даем массив соответствия финально
 	192 => 2016
 	];
 
-if (isset ($_POST)){
+/*if (isset ($_POST)){
 	var_dump($_POST);
     echo '<br>';
-}
+}*/
 
 ?>
-<form action="bdextract.php" method="post">
+<form action="../lib/dbextract.php" method="post">
  <p>Отрасль:
 	 <select name="sector">
 	 <option value="1">Рога</option>

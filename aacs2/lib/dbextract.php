@@ -56,7 +56,7 @@ echo "<h3>Вы выбрали следующие показатели:</h3>";
 echo "Отрасль хозяйства: "  . $_POST['sector'] . "<br>";
 echo "Регион: "  . $_POST['location'] . "<br>";
 echo "За период с "  . $_POST['date_begin'] . " по " . $_POST['date_end'] . "<br>";
-echo "<a href='post4.php'>Новый запрос</a><br>";
+echo "<a href='../public_html/index.php'>Новый запрос</a><br>";
 
 
 
@@ -72,7 +72,7 @@ $table_indicators = '';
 for ($i=1; $i<= count($indicators_array); $i++) {
 
 	$indicator1 = get_indicator_data($link, $i, 1, 1, 1, 12);
-	$table_indicators .= "<tr><td>" . $indicators_array[$i] .
+	$table_indicators .= "<tr><td>" . $indicators_array[$i-1] .
 	//'indicator' .
 	 "</td>"; 
 	for ($k=0; $k<$cells_count; $k++) {
