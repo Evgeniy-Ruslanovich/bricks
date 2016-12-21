@@ -91,6 +91,42 @@ $location_array = [
 'Сахалинская область',
 'Еврейская автономная область',
 'Чукотский автономный округ'];
+$start_years = [ //даем массив соответствия стартового месяца стартовуму году
+	1 => 2001,
+	13 => 2002,
+	25 => 2003,
+	37 => 2004,
+	49 => 2005,
+	61 => 2006,
+	73 => 2007,
+	85 => 2008,
+	97 => 2009,
+	109 => 2010,
+	121 => 2011,
+	133 => 2012,
+	145 => 2013,
+	157 => 2014,
+	169 => 2015,
+	181 => 2016
+	];
+$end_years = [ //даем массив соответствия финального месяца финальному году - потом это можно бдует получать из базы
+	12 => 2001,
+	24 => 2002,
+	36 => 2003,
+	48 => 2004,
+	60 => 2005,
+	72 => 2006,
+	84 => 2007,
+	96 => 2008,
+	108 => 2009,
+	120 => 2010,
+	132 => 2011,
+	144 => 2012,
+	156 => 2013,
+	168 => 2014,
+	180 => 2015,
+	192 => 2016
+	];
 
 if (isset ($_POST)){
 	var_dump($_POST);
@@ -100,7 +136,7 @@ if (isset ($_POST)){
 ?>
 <form action="bdextract.php" method="post">
  <p>Отрасль:
-	 <select name="part">
+	 <select name="sector">
 	 <option value="1">Рога</option>
 	 <option value="2">Копыта</option>
 	 <option value="3">Гусиное перо</option>
@@ -125,7 +161,12 @@ if (isset ($_POST)){
  </select>
  </p>
  <p> Дата с:<select name="date_begin">
- <option value="2001">2001</option>
+  <?php
+ foreach ($start_years as $key => $value) {
+ 	echo '<option value="' . $key . '">' . $value . '</option>';
+ }
+?>
+ <!-- <option value="2001">2001</option>
  <option value="2001">2002</option>
  <option value="2003">2003</option>
  <option value="2004">2004</option>
@@ -140,11 +181,16 @@ if (isset ($_POST)){
  <option value="2013">2013</option>
  <option value="2014">2014</option>
  <option value="2015">2015</option>
- <option value="2016">2016</option>
+ <option value="2016">2016</option> -->
  </select>
  
   Дата по:<select name="date_end">
- <option value="2001">2001</option>
+    <?php
+ foreach ($end_years as $key => $value) {
+ 	echo '<option value="' . $key . '">' . $value . '</option>';
+ }
+?>
+ <!-- <option value="2001">2001</option>
  <option value="2001">2002</option>
  <option value="2003">2003</option>
  <option value="2004">2004</option>
@@ -159,7 +205,7 @@ if (isset ($_POST)){
  <option value="2013">2013</option>
  <option value="2014">2014</option>
  <option value="2015">2015</option>
- <option value="2016">2016</option>
+ <option value="2016">2016</option> -->
  </select>
  </p>
  <p><input type="submit" /></p>
