@@ -22,7 +22,7 @@ $indicators = array('Цена производителя', 'Цена крупн�
 $year_count = $date_end - $date_begin + 1;
 $table_html_begin = "<table><tbody>";
 $table_html_end = '</tbody></table>';
-$table_head = '<tr><td></td>';
+$table_head = '<tr><td ></td>';
 $current_year = $date_begin; //Это переменная для рисования годов в таблице через цикл
 for ($i=1; $i<=$year_count; $i++) {
 
