@@ -63,15 +63,15 @@ echo "<a href='../public_html/index.php'>Новый запрос</a><br>";
 $table_html_begin = "<table><tbody>";//начало вывода таблицы
 $table_html_end = '</tbody></table>';
 
-$start_time = 1;
-$end_time = 12;
+//$start_time = 1;
+//$end_time = 12;
 
 $cells_count = $end_time - $start_time + 1;
 
 $table_indicators = '';
 for ($i=1; $i<= count($indicators_array); $i++) {
 
-	$indicator1 = get_indicator_data($link, $i, 1, 1, 1, 12);
+	$indicator1 = get_indicator_data($link, $i, 1, 1, $start_time, $end_time);
 	$table_indicators .= "<tr><td>" . $indicators_array[$i-1] .
 	//'indicator' .
 	 "</td>"; 

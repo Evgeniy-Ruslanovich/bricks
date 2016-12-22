@@ -134,21 +134,22 @@ $end_years = [ //даем массив соответствия финально
 }*/
 
 ?>
+
 <form action="request.php" method="post">
  <p>Отрасль:
 	 <select name="sector">
-	 <option value="1">Рога</option>
-	 <option value="2">Копыта</option>
-	 <option value="3">Гусиное перо</option>
-	 <option value="4">Утиные клювы</option>
-	 <option value="5">Свиные хвосты</option>
-	 <option value="6">Кошачий корм</option>
+	 <option value="1">Рога говяжьи</option>
+	 <option value="2">Копыта верблюжьи</option>
+	 <option value="3">Перо гусиное</option>
+	 <option value="4">Хвосты свиные</option>
+	 <option value="5">Кошачий корм</option>
  </select>
  </p>
  <p>Локация<select name="location">
  <?php
- foreach ($location_array as $value) {
- 	echo '<option value="' . $value . '">' . $value . '</option>';
+ foreach ($location_array as $key => $value) {
+ 	$a=$key+1;
+ 	echo '<option value="' . $a . '">' . $value . '</option>';
  }
 /*
  <option value="CFO">ЦФО</option>
