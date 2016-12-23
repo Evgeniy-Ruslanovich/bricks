@@ -12,7 +12,7 @@ require_once('functions.php');
 require_once('config.php');
 //define(SQLUSER, "root");
 
-$link = mysqli_connect(SQLHOST, SQLUSER, SQLPASSW);
+$link = mysql_connect(SQLHOST, SQLUSER, SQLPASSW);
 echo "<html><head>
 <style>td {border: 1px solid black} table {border-collapse: collapse}</style></head><body>";
 
@@ -24,18 +24,20 @@ echo "<html><head>
 
 //TODO добавить распаковку имен индикаторов
 
-$indicators_data = mysqli_query($link, "SELECT `id`,`indicator_name_rus`FROM `aasc`.`indicators`"); //пучком
+$indicators_data = mysql_query("SELECT `id`,`indicator_name_rus`FROM `aasc`.`indicators`", $link); //пучком
 //var_dump($indicators_data);
 //echo '<hr>';
+
+/*
 $indicators_data_array = mysqli_fetch_all($indicators_data, MYSQLI_NUM);
-
-//var_dump($indicators_data_array);
-//echo '<hr>';
-
-$indicators_array = [];
-
+$indicators_array = array();
 foreach ($indicators_data_array as $value) {  //создаем массив инидкаторов
 array_push($indicators_array, $value[1]);
+}*/
+
+$indicators_array = array();
+while ($row = mysql_fetch_row($indicators_data)) {
+	array_push($indicators_array, $row[1]);
 }
 
 //var_dump($indicators_array);

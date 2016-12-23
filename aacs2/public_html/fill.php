@@ -135,7 +135,7 @@ $end_years = [ //даем массив соответствия финально
 
 ?>
 
-<form action="request.php" method="post">
+<form action="fillrequest.php" method="post">
  <p>Отрасль:
 	 <select name="sector">
 	 <option value="1">Рога говяжьи</option>
