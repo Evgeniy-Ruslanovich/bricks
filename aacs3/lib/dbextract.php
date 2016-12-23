@@ -70,7 +70,7 @@ $cells_count = $end_time - $start_time + 1;
 $table_indicators = '';
 for ($i=1; $i<= count($indicators_array); $i++) {
 
-	$indicator1 = get_indicator_data($link, $i, $location, 1, $start_time, $end_time);
+	$indicator1 = get_indicator_data($link, $i, $location, $sector, $start_time, $end_time);
 	$table_indicators .= "<tr><td>" . $indicators_array[$i-1] .
 	//'indicator' .
 	 "</td>"; 
